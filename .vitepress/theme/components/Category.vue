@@ -7,6 +7,7 @@
             <div class="post-container">
                 <div class="post-dot"></div>
                 {{ article.frontMatter.title }}
+                <NewPostTag :is-new="article.isNew" />
             </div>
             <div class="date">{{ article.frontMatter.date }}</div>
         </a>
@@ -16,6 +17,7 @@
 import { useData, withBase } from 'vitepress'
 import { computed } from 'vue'
 import { initCategory } from '../functions'
+import NewPostTag from './NewPostTag.vue'
 
 const { theme } = useData()
 const data = computed(() => initCategory(theme.value.posts))
@@ -27,6 +29,6 @@ const data = computed(() => initCategory(theme.value.posts))
     font-size: 1.375rem;
     font-weight: 600;
     color: var(--bt-theme-title);
-    font-family: var(--date-font-family),serif;
+    font-family: var(--date-font-family), serif;
 }
 </style>

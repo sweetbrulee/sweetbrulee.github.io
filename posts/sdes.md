@@ -2,8 +2,10 @@
 date: 2023-12-10
 title: Sdes示例代码
 description: 使用Python实现了一个简单的sdes加解密算法代码，随便玩玩
+category: Cyber Security
 tags:
-    - Cyber Secutiry
+    - python
+    - cryptography
 ---
 
 # 示例代码

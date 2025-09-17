@@ -6,6 +6,7 @@ type Post = {
         tags: string[]
         description: string
     }
+    isNew: boolean
     excerpt: string
     regularPath: string
 }

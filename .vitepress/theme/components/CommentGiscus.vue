@@ -13,7 +13,7 @@ giscusTalk(
     {
         repo: repo,
         repoId: repoId,
-        category: 'General',
+        category: 'Announcements',
         categoryId: categoryId,
         mapping: 'pathname',
         inputPosition: 'top',

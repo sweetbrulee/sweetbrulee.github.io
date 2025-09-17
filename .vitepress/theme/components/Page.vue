@@ -12,7 +12,7 @@
             <span v-for="item in article.frontMatter.tags"
                 ><a :href="withBase(`/pages/tags.html?tag=${item}`)"> {{ item }}</a></span
             >
-            <span class="new-post-span" v-if="article.isNew">新</span>
+            <NewPostTag :is-new="article.isNew" />
         </div>
     </div>
 
@@ -35,6 +35,7 @@
 import { withBase } from 'vitepress'
 import { PropType, computed } from 'vue'
 import { generatePaginationArray } from '../pagination'
+import NewPostTag from './NewPostTag.vue'
 interface Article {
     regularPath: string
     excerpt: string
@@ -116,12 +117,6 @@ const pageArray = computed(() => {
     background: var(--vp-c-text-1);
     color: var(--vp-c-neutral-inverse);
     border: 1px solid var(--vp-c-text-1) !important;
-}
-
-.new-post-span {
-    background: var(--vp-c-brand);
-    color: white;
-    border-radius: 5px;
 }
 
 @media screen and (max-width: 768px) {

@@ -2,9 +2,12 @@
 date: 2022-09-18
 title: Tensorflow架构解析
 description: 从端到端解析 TensorFlow 架构，包括计算图、分层模块、分布式训练、Kernel 优化及 TensorFlow 2.0 的新特性。
+category: Machine Learning
 tags:
-    - Tensorflow
-    - Machine Learning
+    - tensorflow
+    - keras
+    - computational graphs
+    - python
 ---
 
 # Tensorflow 架构解析

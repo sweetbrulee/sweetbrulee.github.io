@@ -2,8 +2,11 @@
 date: 2022-11-30
 title: Photorealistic Rendering
 description: 计算机图形学：简单真实渲染光照模型简介（英文）
+category: Computer Graphics
 tags:
-    - Computer Graphics
+    - rendering
+    - optics
+    - physics
 ---
 
 ### Local Illumination

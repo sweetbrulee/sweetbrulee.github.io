@@ -17,9 +17,9 @@ export default defineConfig({
         website: 'https://github.com/airene/vitepress-blog-pure', //copyright link
         // 评论的仓库地址 https://giscus.app/ 请按照这个官方初始化后覆盖
         comment: {
-            repo: 'airene/vitepress-blog-pure',
-            repoId: 'MDEwOlJlcG9zaXRvcnkzODIyMjY5Nzg',
-            categoryId: 'DIC_kwDOFshSIs4CpZga'
+            repo: 'sweetbrulee/sweetbrulee.github.io',
+            repoId: 'R_kgDOIYuLPw',
+            categoryId: 'DIC_kwDOIYuLP84Cvklv'
         },
         nav: [
             { text: 'Home', link: '/' },

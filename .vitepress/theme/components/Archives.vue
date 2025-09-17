@@ -7,6 +7,7 @@
             <div class="post-container">
                 <div class="post-dot"></div>
                 {{ article.frontMatter.title }}
+                <NewPostTag :is-new="article.isNew" />
             </div>
             <div class="date">{{ article.frontMatter.date.slice(5) }}</div>
         </a>
@@ -17,6 +18,7 @@
 import { useData, withBase } from 'vitepress'
 import { computed } from 'vue'
 import { useYearSort } from '../functions'
+import NewPostTag from './NewPostTag.vue'
 
 const { theme } = useData()
 const data = computed(() => useYearSort(theme.value.posts))
@@ -28,6 +30,6 @@ const data = computed(() => useYearSort(theme.value.posts))
     font-size: 1.375rem;
     font-weight: 600;
     color: var(--bt-theme-title);
-    font-family: var(--date-font-family),serif;
+    font-family: var(--date-font-family), serif;
 }
 </style>

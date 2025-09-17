@@ -14,6 +14,7 @@
         <div class="post-container">
             <div class="post-dot"></div>
             {{ article.frontMatter.title }}
+            <NewPostTag :is-new="article.isNew" />
         </div>
         <div class="date">{{ article.frontMatter.date }}</div>
     </a>
@@ -22,6 +23,7 @@
 import { computed, ref } from 'vue'
 import { useData, withBase } from 'vitepress'
 import { initTags } from '../functions'
+import NewPostTag from './NewPostTag.vue'
 
 let url = location.href.split('?')[1]
 let params = new URLSearchParams(url)
