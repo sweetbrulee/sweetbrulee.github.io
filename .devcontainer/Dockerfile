@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/universal:latest as base
+FROM mcr.microsoft.com/devcontainers/typescript-node as base
 
 WORKDIR /workspaces/sweetbrulee.github.io
 

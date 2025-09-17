@@ -20,5 +20,5 @@
             ]
         }
     },
-    "containerUser": "root"
+    "remoteUser": "root"
 }
