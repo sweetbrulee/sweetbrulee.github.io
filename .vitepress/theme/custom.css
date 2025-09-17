@@ -35,9 +35,9 @@
     font-size: 0.9375rem;
 }
 .title {
-    font-size: 1.5rem !important;
+    font-size: 1rem !important;
     letter-spacing: 1px;
-    font-weight: 600 !important;
+    font-weight: 500 !important;
     /*text-transform: uppercase;*/
     font-family: Optima, sans-serif !important;
 }

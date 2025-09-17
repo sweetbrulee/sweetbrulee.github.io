@@ -7,8 +7,11 @@
             </div>
         </div>
         <p class="describe" v-html="article.frontMatter.description"></p>
-        <div class='post-info'>
-            {{ article.frontMatter.date }} <span v-for="item in article.frontMatter.tags"><a :href="withBase(`/pages/tags.html?tag=${item}`)"> {{ item }}</a></span>
+        <div class="post-info">
+            {{ article.frontMatter.date }}
+            <span v-for="item in article.frontMatter.tags"
+                ><a :href="withBase(`/pages/tags.html?tag=${item}`)"> {{ item }}</a></span
+            >
         </div>
     </div>
 
@@ -28,12 +31,12 @@
 </template>
 
 <script lang="ts" setup>
-
 import { withBase } from 'vitepress'
 import { PropType, computed } from 'vue'
 import { generatePaginationArray } from '../pagination'
 interface Article {
     regularPath: string
+    excerpt: string
     frontMatter: {
         order: number
         title: string
@@ -75,11 +78,11 @@ const pageArray = computed(() => {
 .post-title {
     font-size: 1.0625rem;
     font-weight: 500;
-    color: var(--bt-theme-title)!important;
+    color: var(--bt-theme-title) !important;
     margin: 0.1rem 0;
 }
-.post-title a{
-    color: var(--bt-theme-title)!important;
+.post-title a {
+    color: var(--bt-theme-title) !important;
 }
 
 .describe {
@@ -87,6 +90,7 @@ const pageArray = computed(() => {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     overflow: hidden;
     color: var(--vp-c-text-2);
     margin: 10px 0;
@@ -127,6 +131,7 @@ const pageArray = computed(() => {
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
+        line-clamp: 2;
         overflow: hidden;
         width: 17rem;
     }
@@ -135,6 +140,7 @@ const pageArray = computed(() => {
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
+        line-clamp: 3;
         overflow: hidden;
         margin: 0.5rem 0 1rem;
     }

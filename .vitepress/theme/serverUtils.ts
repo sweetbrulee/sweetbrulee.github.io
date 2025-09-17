@@ -18,7 +18,8 @@ async function getPosts(pageSize: number) {
     let posts = await Promise.all(
         paths.map(async (item) => {
             const content = await fs.readFile(item, 'utf-8')
-            const { data } = matter(content)
+            const { data, excerpt } = matter(content, { excerpt: true })
+
             return {
                 frontMatter: {
                     ...data,
@@ -26,6 +27,7 @@ async function getPosts(pageSize: number) {
                     // 处理 order：非数值时强制转换为 0
                     order: _convertOrder(data.order)
                 },
+                excerpt,
                 regularPath: `/${item.replace('.md', '.html')}`
             }
         })

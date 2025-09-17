@@ -16,7 +16,10 @@
     "customizations": {
         "vscode": {
             "extensions": [
-                "Vue.volar"
+                "Vue.volar",
+                "VisualStudioExptTeam.vscodeintellicode",
+                "mhutchie.git-graph",
+                "esbenp.prettier-vscode"
             ]
         }
     },

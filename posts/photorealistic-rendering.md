@@ -1,5 +1,9 @@
 ---
-title: 'Photorealistic Rendering'
+date: 2022-11-30
+title: Photorealistic Rendering
+description: 计算机图形学：简单真实渲染光照模型简介（英文）
+tags:
+    - Computer Graphics
 ---
 
 ### Local Illumination
@@ -42,7 +46,7 @@ title: 'Photorealistic Rendering'
 
 - Ray casting Algorithm
 - Ray tracing Algorithm
-  - Ray tree (recursive)
+    - Ray tree (recursive)
 
 ### Shading
 
@@ -51,36 +55,36 @@ title: 'Photorealistic Rendering'
 > Here comes normal, here comes the **same-level** color.
 
 - Flat Shading (per face)
-  > polygon color + polygon normal
-  - polygon color
-    - **calculate polygon color with local illumination** using single polygon normal
+    > polygon color + polygon normal
+    - polygon color
+        - **calculate polygon color with local illumination** using single polygon normal
 - Smooth[Gouraud] Shading (per vertex)
-  > fragment color + vertex normal
-  - vertex color
-    - **calculate vertex color with local illumination** using vertex normal
-    - **\*interpolate vertices colors** which calculated by local illumination, and give to fragment color\*
+    > fragment color + vertex normal
+    - vertex color
+        - **calculate vertex color with local illumination** using vertex normal
+        - **\*interpolate vertices colors** which calculated by local illumination, and give to fragment color\*
 - Phong Shading (per fragment)
-  > fragment color + fragment normal
-  - vertex normal
-    - **\*interpolate vertices normals**, and give to\* fragment normal
-  - fragment color
-    - **calculate fragment color with local illumination** using fragment normal
+    > fragment color + fragment normal
+    - vertex normal
+        - **\*interpolate vertices normals**, and give to\* fragment normal
+    - fragment color
+        - **calculate fragment color with local illumination** using fragment normal
 
 ### Texture Mapping
 
 ---
 
 - Texture Space $[0,1]^2$
-  - Geometric texture
-    - Bump Mapping
-    - Normal Mapping
-    - Displacement Mapping
-  - Color texture
-    - used as color label
-    - used as **coefficient** in light model
+    - Geometric texture
+        - Bump Mapping
+        - Normal Mapping
+        - Displacement Mapping
+    - Color texture
+        - used as color label
+        - used as **coefficient** in light model
 - Anti-aliasing
-  - Reason: **undersampling**
-  - Solution
-    - Prefilter
-    - Supersampling
-    - Mipmap
+    - Reason: **undersampling**
+    - Solution
+        - Prefilter
+        - Supersampling
+        - Mipmap

@@ -36,7 +36,10 @@ export default defineConfig({
         outline: {
             label: '文章摘要'
         },
-        socialLinks: [{ icon: 'github', link: 'https://github.com/airene/vitepress-blog-pure' }]
+        socialLinks: [
+            { icon: 'github', link: 'https://github.com/sweetbrulee/' },
+            { icon: 'linkedin', link: 'https://www.linkedin.com/in/shaocheng-ruan/' }
+        ]
     } as any,
 
     srcExclude: isProd
@@ -49,7 +52,6 @@ export default defineConfig({
         : ['README.md'],
     vite: {
         //build: { minify: false }
-        server: { port: 5000 }
     },
     markdown: {
         math: true
