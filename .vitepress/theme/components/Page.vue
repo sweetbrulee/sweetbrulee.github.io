@@ -12,6 +12,7 @@
             <span v-for="item in article.frontMatter.tags"
                 ><a :href="withBase(`/pages/tags.html?tag=${item}`)"> {{ item }}</a></span
             >
+            <span class="new-post-span" v-if="article.isNew">新</span>
         </div>
     </div>
 
@@ -37,6 +38,7 @@ import { generatePaginationArray } from '../pagination'
 interface Article {
     regularPath: string
     excerpt: string
+    isNew: boolean
     frontMatter: {
         order: number
         title: string
@@ -114,6 +116,12 @@ const pageArray = computed(() => {
     background: var(--vp-c-text-1);
     color: var(--vp-c-neutral-inverse);
     border: 1px solid var(--vp-c-text-1) !important;
+}
+
+.new-post-span {
+    background: var(--vp-c-brand);
+    color: white;
+    border-radius: 5px;
 }
 
 @media screen and (max-width: 768px) {

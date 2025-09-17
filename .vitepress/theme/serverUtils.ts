@@ -20,6 +20,8 @@ async function getPosts(pageSize: number) {
             const content = await fs.readFile(item, 'utf-8')
             const { data, excerpt } = matter(content, { excerpt: true })
 
+            const isNew = _isNew(data.date)
+
             return {
                 frontMatter: {
                     ...data,
@@ -28,6 +30,7 @@ async function getPosts(pageSize: number) {
                     order: _convertOrder(data.order)
                 },
                 excerpt,
+                isNew,
                 regularPath: `/${item.replace('.md', '.html')}`
             }
         })
@@ -81,6 +84,15 @@ function _convertOrder(input?: unknown): number {
     if (typeof input === 'number') return input
     const num = Number(input)
     return isNaN(num) ? 0 : num
+}
+
+function _isNew(date: Date): boolean {
+    const now = new Date()
+    const oneMonthAgo = new Date()
+    // 设定一个月之内为新鲜贴文
+    oneMonthAgo.setMonth(now.getMonth() - 1)
+
+    return date > oneMonthAgo
 }
 
 export { getPosts }
