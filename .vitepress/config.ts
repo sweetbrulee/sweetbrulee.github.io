@@ -10,7 +10,7 @@ export default defineConfig({
     title: 'sweetbrulee',
     base: '/',
     cacheDir: './node_modules/vitepress_cache',
-    description: 'vitepress,blog,blog-theme',
+    description: 'sweetbrulee 的个人技术博客，讨论并分享计算机技术。',
     ignoreDeadLinks: true,
     themeConfig: {
         posts: await getPosts(pageSize),
@@ -55,7 +55,12 @@ export default defineConfig({
     },
     markdown: {
         math: true
-    }
+    },
+    sitemap: {
+        hostname: 'https://sweetbrulee.github.io',
+        lastmodDateOnly: false
+    },
+    lastUpdated: true
     /*
       optimizeDeps: {
           keepNames: true
