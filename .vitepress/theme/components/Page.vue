@@ -12,7 +12,7 @@
             <span v-for="item in article.frontMatter.tags"
                 ><a :href="withBase(`/pages/tags.html?tag=${item}`)"> {{ item }}</a></span
             >
-            <NewPostTag :is-new="article.isNew" />
+            <NewPostTag :date="article.frontMatter.date" />
         </div>
     </div>
 
@@ -39,7 +39,6 @@ import NewPostTag from './NewPostTag.vue'
 interface Article {
     regularPath: string
     excerpt: string
-    isNew: boolean
     frontMatter: {
         order: number
         title: string

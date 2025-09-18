@@ -3,12 +3,25 @@
 </template>
 
 <script lang="ts" setup>
+import { computed } from 'vue'
+
 const props = defineProps({
-    isNew: {
-        type: Boolean,
+    date: {
+        type: String,
         required: true
     }
 })
+
+const isNew = computed(() => _isNew(props.date))
+
+function _isNew(date: string): boolean {
+    const now = new Date()
+    const oneMonthAgo = new Date()
+    // 设定一个月之内为新鲜贴文
+    oneMonthAgo.setMonth(now.getMonth() - 1)
+
+    return new Date(date) > oneMonthAgo
+}
 </script>
 
 <style scoped>

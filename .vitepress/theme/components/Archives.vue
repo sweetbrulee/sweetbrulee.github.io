@@ -7,7 +7,7 @@
             <div class="post-container">
                 <div class="post-dot"></div>
                 {{ article.frontMatter.title }}
-                <NewPostTag :is-new="article.isNew" />
+                <NewPostTag :date="article.frontMatter.date" />
             </div>
             <div class="date">{{ article.frontMatter.date.slice(5) }}</div>
         </a>
