@@ -259,4 +259,4 @@ def read_playable_history(user_id: str, guild_id: str, *, keywords: str, limit: 
 
 我们也许会在某一天相见的，Rika🫂。
 
-> 目前 Rika 只开源了部分源代码 https://github.com/sweetbrulee/rika，以上内容均未完整开源。
+> 目前 Rika 只开源了部分源代码 https://github.com/sweetbrulee/rika ，以上内容均未完整开源。
