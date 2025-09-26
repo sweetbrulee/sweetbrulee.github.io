@@ -154,7 +154,7 @@ async def compute_ffmpeg_audio(
 
 ## 智能峰值检测：机器学习的应用
 
-这个环节最让我兴奋了。~~在 ChatGPT 呕心沥血的教导下，~~在 `src/backend/services/playablemetadata/heatmap/peaks.py` 中，我实现了一个基于统计学和高斯混合模型的峰值检测算法：
+这个环节最让我兴奋了。~~在 ChatGPT 呕心沥血的教导下~~，在 `src/backend/services/playablemetadata/heatmap/peaks.py` 中，我实现了一个基于统计学和高斯混合模型的峰值检测算法：
 
 ```python
 def find_outstanding_peaks_std(
