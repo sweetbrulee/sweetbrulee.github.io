@@ -4,9 +4,9 @@ title: 腾讯公开课大作业：Shooter Game demo 改造
 description: 解析Shooter Game demo改造全过程：从炮台系统、AI行为树到UMG界面优化。
 category: Game Engine
 tags:
-  - c++
-  - ue5
-  - game
+    - c++
+    - ue5
+    - game
 ---
 
 本项目在 Epic Games 官方提供的 Shooter Game demo 的基础之上做了修改，通过修改 demo 学习到了：
@@ -65,8 +65,8 @@ tags:
 - **左右转**较为简单，只需使用函数 `AddRelativeRotation(输入参数 DeltaYaw)` 即可。
 - **上下转**需考虑 Range（设定在 0~80 度之间），否则会产生旋转方向混乱。
 - 接着再设计函数 `PredictionIsOutOfRange` 判断在这一次上下转操作中是否将会超过 0~80 度，
-  - 如果是，则启用自定义的 `AdjustToEdgeRotation` 方法，会限制角度在端值。
-  - 否则启用自定义的 `RotateRegularly` 方法，照常上下旋转（`DeltaPitch`）。
+    - 如果是，则启用自定义的 `AdjustToEdgeRotation` 方法，会限制角度在端值。
+    - 否则启用自定义的 `RotateRegularly` 方法，照常上下旋转（`DeltaPitch`）。
 
 ### 炮弹如何开火?
 
@@ -165,21 +165,21 @@ SphereComponent->OnComponentHit.AddDynamic(this, &AFortProjectile::OnProjectileI
 - **左下角的生命条**（`HealthBar`）依据 `CurrentHealth / MaxHealth` 进行比例调整。
 - `CurrentHealth` 的 Binding 如下：
 
-  首先获取 `ShooterCharacter` 对象，取得生命值变量并乘以 2（原项目中最大生命值为 50），就是返回值。
+    首先获取 `ShooterCharacter` 对象，取得生命值变量并乘以 2（原项目中最大生命值为 50），就是返回值。
 
 - 当生命值小于 20 时，调整左下角的生命条颜色为红色。
 
 - **击杀数 Binding:**
 
-  由 `ShooterPlayerController` 获得 `ShooterPlayerState`，然后执行 `GetKills` 函数。
+    由 `ShooterPlayerController` 获得 `ShooterPlayerState`，然后执行 `GetKills` 函数。
 
 - **弹药数 Binding:**
 
-  通过 `ShooterCharacter` 获取武器对象（`GetWeapon`），然后获取子弹数。
+    通过 `ShooterCharacter` 获取武器对象（`GetWeapon`），然后获取子弹数。
 
 - **倒计时 Binding:**
 
-  由 `ShooterGameState` 获取 `RemainingTime`，经过 Formatted 以后回传。
+    由 `ShooterGameState` 获取 `RemainingTime`，经过 Formatted 以后回传。
 
 ### NPC 被击杀时产生一个 KillMessage Widget
 
@@ -201,7 +201,7 @@ SphereComponent->OnComponentHit.AddDynamic(this, &AFortProjectile::OnProjectileI
 
 首先创建一个 `DraggableElement` 蓝图对象，所有可拖动的元件都是它的子类。当中有两个变量。
 
-<img :src="./images/ShooterGame_demo_t1.jpeg" width="300" />
+<img src="./images/ShooterGame_demo_t1.jpeg" width="300" />
 
 - `DragOffset` 记录拖动偏移量。
 - `AliasReference` 保存拖动时分身的引用。
@@ -213,7 +213,7 @@ SphereComponent->OnComponentHit.AddDynamic(this, &AFortProjectile::OnProjectileI
 最后，在 `FShooterIngameMenu::Construct(...)` 里新增加下代码：
 
 ```cpp
-/** #freeDrag /
+/** #freeDrag **/
 MenuHelper::AddMenuTreeSP(BootMenuItem, LOCTEXT("FreeDrag", "FREE DRAG"), this, &FShooterIngameMenu::OnFreeDrag)
 ```
 
@@ -307,12 +307,11 @@ else
 这样做有利于状态机状态的切换。  
 ![](images/ShooterGame_demo_p16_img20.jpeg)
 
-- `IsStepping` 是在 Event Graph 里设定的一个布尔判定，判断角色是否有脚的踩踏行为。
-- 而当 `Speed < 150.0` 时，切换到停步动作。
+`IsStepping` 是在 Event Graph 里设定的一个布尔判定，判断角色是否有脚的踩踏行为。
+而当 `Speed < 150.0` 时，切换到停步动作。
 
-- 在 `RunTPP` 以及 `HeroTPP_AimOffsets` 里，对 `SampleSmoothing` 进行调整：
+在 `RunTPP` 以及 `HeroTPP_AimOffsets` 里，对 `SampleSmoothing` 进行调整：
 
-  <img src="images/ShooterGame_demo_t2.jpeg" width="500" />
+<img src="./images/ShooterGame_demo_t2.jpeg" width="500" />
 
 这样一来，对于动画序列的切换会更加平滑。
-

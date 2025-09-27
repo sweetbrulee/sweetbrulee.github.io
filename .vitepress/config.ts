@@ -8,6 +8,7 @@ const isProd = process.env.NODE_ENV === 'production'
 
 export default defineConfig({
     title: 'sweetbrulee',
+    head: [['link', { rel: 'icon', href: '/favicon_64x64.ico' }]],
     base: '/',
     cacheDir: './node_modules/vitepress_cache',
     description: 'sweetbrulee 的个人技术博客，讨论并分享计算机技术。',

@@ -12,7 +12,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && \
     apt-get install -y --no-install-recommends git-lfs && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN npm install -g bun && \
-    bun install
+RUN npm install -g bun
+RUN bun install
 
 
