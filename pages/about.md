@@ -8,7 +8,7 @@ comment: true
 
 ## About me
 
----
+![](/favicon_64x64.ico)
 
 - 👋 Hi, I'm [@sweetbrulee](https://github.com/sweetbrulee)
 - 👀 I'm interested in video games, musics and programming
