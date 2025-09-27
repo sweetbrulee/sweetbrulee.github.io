@@ -16,7 +16,7 @@ tags:
 ## 场景中创建一个炮台
 
 我的方案是，建立一个 Pawn 名为 `BP_Fort`，其 Components 如下：  
-![](images/ShooterGame_demo_p1_img1.jpeg)
+![](images/ShooterGame_demo_p1_img1.jpeg){width=500px}
 
 - **Body** 是炮台的实体主体，有几个附件。
 - **Arrow** 永远指向炮台前方。
@@ -24,17 +24,17 @@ tags:
 - **ParticleSystem** 用于炮台发射时，有关于炮台的闪光粒子特效。
 - **SphereCollision** 用于玩家是否进入操控范围的检测。
 
-### Variables:
+#### Variables:
 
 - **Holder**：炮台对象目前的持有者。  
-  ![](images/ShooterGame_demo_p2_img2.jpeg)
+  ![](images/ShooterGame_demo_p2_img2.jpeg){width=500px}
 
-### 玩家可以操控炮台左右转
+#### 玩家可以操控炮台左右转
 
 为了能操控炮台，设定 InputAction **UseFort** (Press "E")。
 
 在 `PlayerPawn` 中定义事件触发后执行如下蓝图节点：  
-![](images/ShooterGame_demo_p3_img3.jpeg)
+![](images/ShooterGame_demo_p3_img3.jpeg){width=1000px}
 
 `PlayerPawn` 中有两个 Variables：
 
@@ -45,13 +45,13 @@ tags:
 
 #### PossessToFort (Blueprint):
 
-![](images/ShooterGame_demo_p3_img4.jpeg)
+![](images/ShooterGame_demo_p3_img4.jpeg){width=700px}
 
 在 `BP_Fort` 中，事件触发后执行 `PossessToPlayerPawn`。
 
 #### PossessToPlayerPawn (Blueprint):
 
-![](images/ShooterGame_demo_p4_img5.jpeg)
+![](images/ShooterGame_demo_p4_img5.jpeg){width=700px}
 
 ### 如何判断玩家是否在可操控炮台范围内？
 
@@ -88,7 +88,7 @@ tags:
 ### BP_FortProjectile 是从哪里来的?
 
 从 `FortProjectile` 类继承而来。  
-![](images/ShooterGame_demo_p5_img6.jpeg)
+![](images/ShooterGame_demo_p5_img6.jpeg){width=300px}
 
 #### AFortProjectile (C++, Derived from AActor):
 
@@ -160,7 +160,7 @@ SphereComponent->OnComponentHit.AddDynamic(this, &AFortProjectile::OnProjectileI
 ## UMG 界面
 
 使用 UMG 替换掉了原本的 Slate UI 实现方法。建立 Widget Blueprint 名为 `Screen`，排版如下：  
-![](images/ShooterGame_demo_p8_img7.jpeg)
+![](images/ShooterGame_demo_p8_img7.jpeg){width=700px}
 
 - **左下角的生命条**（`HealthBar`）依据 `CurrentHealth / MaxHealth` 进行比例调整。
 - `CurrentHealth` 的 Binding 如下：
@@ -183,13 +183,13 @@ SphereComponent->OnComponentHit.AddDynamic(this, &AFortProjectile::OnProjectileI
 
 ### NPC 被击杀时产生一个 KillMessage Widget
 
-![](images/ShooterGame_demo_p9_img8.jpeg)
+![](images/ShooterGame_demo_p9_img8.jpeg){width=300px}
 
 当此 Widget 生成后，`PlayAnimation`，并 `Delay` 三秒钟，再次 `PlayAnimation`，最后 `RemoveFromParent`（从主 Widget 中移除）。两次 `PlayAnimation` 为 `FadeIn` & `FadeOut`，其中 `FadeOut` 只是 `FadeIn` 的逆操作。
 
 #### FadeIn (UI Animation)：（对于 Opacity 及 Shadow Color 的渐变）
 
-![](images/ShooterGame_demo_p9_img9.jpeg)
+![](images/ShooterGame_demo_p9_img9.jpeg){width=700px}
 
 ---
 
@@ -201,7 +201,7 @@ SphereComponent->OnComponentHit.AddDynamic(this, &AFortProjectile::OnProjectileI
 
 首先创建一个 `DraggableElement` 蓝图对象，所有可拖动的元件都是它的子类。当中有两个变量。
 
-<img src="./images/ShooterGame_demo_t1.jpeg" width="300" />
+![](images/ShooterGame_demo_t1.jpeg){width=300px}
 
 - `DragOffset` 记录拖动偏移量。
 - `AliasReference` 保存拖动时分身的引用。
@@ -221,7 +221,7 @@ MenuHelper::AddMenuTreeSP(BootMenuItem, LOCTEXT("FreeDrag", "FREE DRAG"), this, 
 
 ---
 
-### 炮台上双倍积分
+## 炮台上双倍积分
 
 要使得炮台成功击杀敌人有双倍积分，先在 `ShooterPlayerState` 上声明属性。
 
@@ -253,24 +253,24 @@ else
 
 ---
 
-### 生成导航网格
+## 生成导航网格
 
 使用 `NavMeshBoundVolume` 生成地图中的导航网格。  
-![](images/ShooterGame_demo_p11_img10.jpeg)
+![](images/ShooterGame_demo_p11_img10.jpeg){width=500px}
 
 ### 新增指定巡逻路径
 
 新建一蓝图类，`BP_PatrolPath`。其拥有一个元素为向量的 Array。放置在地图上（一个菱形点为 Array 中的一个向量元素）。  
-![](images/ShooterGame_demo_p12_img11.jpeg)
+![](images/ShooterGame_demo_p12_img11.jpeg){width=500px}
 
 将 `TargetPatrolPoint` 加入 BlackBoard 中成为 key，其保存唯一一个决定向量。  
-![](images/ShooterGame_demo_p12_img12.jpeg)
+![](images/ShooterGame_demo_p12_img12.jpeg){width=500px}
 
 在行为树中，如果找不到敌人，实现定点巡逻。  
-![](images/ShooterGame_demo_p13_img13.jpeg)
+![](images/ShooterGame_demo_p13_img13.jpeg){width=900px}
 
 其中 `BTTask_ChoosePatrolPoint` 的实现如下：  
-![](images/ShooterGame_demo_p13_img14.jpeg)
+![](images/ShooterGame_demo_p13_img14.jpeg){width=900px}
 
 - 首先获得世界上唯一的 `BP_PatrolPath` 实例。
 - 接着从这个实例当中随机挑选一个 Vector，并将它转为世界坐标。
@@ -278,40 +278,40 @@ else
 
 ---
 
-### 设置视野内没有敌人的举措
+## 设置视野内没有敌人的举措
 
 在原本的设计中，AI 如果视野内发现不了敌人，依然会寻找敌人，只不过不是用 LoS 方法。现在，我做了一些修改：  
-![](images/ShooterGame_demo_p13_img15.jpeg)
+![](images/ShooterGame_demo_p13_img15.jpeg){width=900px}
 
 现在，寻找敌人将只使用 LoS 方法。
 
 ---
 
-### 停步动作
+## 停步动作
 
 针对动画，我将与动画绑定的原有骨骼与游戏内角色的骨骼做了 IK 重定向。  
-![](images/ShooterGame_demo_p14_img16.jpeg)
+![](images/ShooterGame_demo_p14_img16.jpeg){width=700px}
 
 - 一开始我先重新绑定了角色被击杀动画、角色被击飞以及站起动画。
 - AI 如果被 Launcher 所击中，会有一定概率被击飞起来，并且瘫倒在地上。玩家可以在**这时候击杀 AI**。
 
 停步动作我同样新增了动画。  
-![](images/ShooterGame_demo_p14_img17.jpeg)
+![](images/ShooterGame_demo_p14_img17.jpeg){width=700px}
 
 并且我建立了一个 `BlendSpace`，用来实现奔跑到停步的平滑切换。  
-![](images/ShooterGame_demo_p15_img18.jpeg)
+![](images/ShooterGame_demo_p15_img18.jpeg){width=700px}
 
 在动画序列结束之前，会发出 `Stop AnimNotify`。  
-![](images/ShooterGame_demo_p15_img19.jpeg)
+![](images/ShooterGame_demo_p15_img19.jpeg){width=700px}
 
 这样做有利于状态机状态的切换。  
-![](images/ShooterGame_demo_p16_img20.jpeg)
+![](images/ShooterGame_demo_p16_img20.jpeg){width=700px}
 
 `IsStepping` 是在 Event Graph 里设定的一个布尔判定，判断角色是否有脚的踩踏行为。
 而当 `Speed < 150.0` 时，切换到停步动作。
 
 在 `RunTPP` 以及 `HeroTPP_AimOffsets` 里，对 `SampleSmoothing` 进行调整：
 
-<img src="./images/ShooterGame_demo_t2.jpeg" width="500" />
+![](images/ShooterGame_demo_t2.jpeg){width=500px}
 
 这样一来，对于动画序列的切换会更加平滑。

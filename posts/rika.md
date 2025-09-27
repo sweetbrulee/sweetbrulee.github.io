@@ -182,7 +182,7 @@ def find_outstanding_peaks_std(
     return outstanding_peaks_idx, outstanding_peaks
 ```
 
-更进一步，我还实现了基于 BIC（贝叶斯信息准则）的高斯混合模型聚类：
+我还实现了基于 BIC（贝叶斯信息准则）的高斯混合模型聚类：
 
 ```python
 def gmm_bic_cluster(objects: list, key: Callable[[Any], float | int] = lambda x: x):

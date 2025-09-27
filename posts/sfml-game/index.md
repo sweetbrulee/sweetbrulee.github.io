@@ -4,10 +4,10 @@ title: 用 C++ 和 SFML 实现一个单人打斗游戏
 description: 全面解析 C++ 实现的 2D 打斗游戏，从类与数据结构的设计到音效系统的搭建，以实践的方式学习 C++ 语言。
 category: C++
 tags:
-  - c++
-  - sfml
-  - game
-  - opengl
+    - c++
+    - sfml
+    - game
+    - opengl
 ---
 
 ## 一、选题背景
@@ -22,11 +22,11 @@ tags:
 
 游戏的核心类从 `Game` 开始，在 `Game` 里面包含着一个堆栈容器 `states`，用来处理并堆叠游戏的状态。
 
-![](images/CMMSFML_p1_img1.jpeg)
+![](images/CMMSFML_p1_img1.jpeg){width=500px}
 
 在 `states` 里存储着 `State` 类型。`State` 类为一基类，底下有三个派生类：`GameState`、`SettingState` 以及 `MainMenuState`。`states` 容器的顶端永远是目前用户所位于的状态，而当用户跳出当前状态后，容器顶端则执行 `pop` 动作。
 
-![](images/CMMSFML_p2_img2.jpeg)
+![](images/CMMSFML_p2_img2.jpeg){width=700px}
 
 在 `GameState` 类中，包含着 `Player`、`Enemy`、`PlayerGUI`、`EnemyGUI`、`PauseMenu`、`DeadMenu`、`VictoryMenu` 类的对象。另外，`Player` 与 `Enemy` 属于 `Entity` 的派生类。以下是关于这些类的介绍：
 
@@ -48,7 +48,7 @@ tags:
 
 以下是有关于 `Player` 与 `Enemy` 都拥有的类对象:
 
-![](images/CMMSFML_p4_img3.jpeg)
+![](images/CMMSFML_p4_img3.jpeg){width=700px}
 
 `Player` 和 `Enemy` 类之中都包含有 `AnimationComponent`（动画组件）、`HitboxComponent`（碰撞箱组件）、`MovementComponent`（移动组件）这三个类。此外，`AnimationComponent` 类之中还包含了 `Animation`（动画）类。对于这三个组件类以及动画类的介绍如下:
 
@@ -59,7 +59,7 @@ tags:
 
 下面这张图片是 GUI 元件在设计之中的应用:
 
-![](images/CMMSFML_p5_img4.jpeg)
+![](images/CMMSFML_p5_img4.jpeg){width=700px}
 
 我们在 `Gui.h` 中定义了 `Button`（按钮）、`DropDownList`（下拉清单）、`ScrollBar`（滚珠滚动条）三个类，其中的 `Button` 类运用在主菜单、暂停菜单、设置菜单、死亡菜单、胜利菜单之中，玩家通过鼠标左键单击这些按钮来实现互动和调整。`DropDownList` 和 `ScrollBar` 运用在了设置菜单之中，便于直观地进行分辨率的调整和音量大小的调整。
 
@@ -67,7 +67,7 @@ tags:
 2. **DropDownList 类**：下拉选单，能够从打开的选单中选择选项，做出变化和调整。在调整屏幕分辨率时，能够显得更加直观。
 3. **ScrollBar 类**：滚珠滚动条，通过调整滚珠在滚动条上的位置，进行相关调整。调节音量时会比较直观。
 
-![](images/CMMSFML_p6_img5.jpeg)
+![](images/CMMSFML_p6_img5.jpeg){width=700px}
 
 我们在最后设计了一个音效类 `SoundClock`，由 SFML 库中的 `Sound` 类派生而来，在原来的基础上增加了音效缓冲区以及计时器。我们也加入了 `SoundFile` 类，其中包含着 `SoundDir` 类对象，来记录音效档案路径，以提升开发效率。
 
@@ -147,11 +147,11 @@ tags:
 
 我们小组所预期的功能全部实现，有基本的、可预期的游戏互动结果。玩家和敌人会在正确的时间点扣血、补血，数值处理也正确。
 
-![](images/CMMSFML_p12_img6.jpeg)
+![](images/CMMSFML_p12_img6.jpeg){width=500px}
 
 设置界面可正常操作。
 
-![](images/CMMSFML_p12_img7.jpeg)
+![](images/CMMSFML_p12_img7.jpeg){width=500px}
 
 ## 五、课程设计总结
 
@@ -163,6 +163,6 @@ tags:
 
 ## 参考文献
 
-[1]《C++ SFML RPG》——Suraj Sharma https://www.youtube.com/watch?v=IdKZpv6xqdw&list=PL6xS0sbVA1ebkU66okpi-KViA08_9DJKg  
+[1][《C++ SFML RPG》——Suraj Sharma](https://www.youtube.com/watch?v=IdKZpv6xqdw&list=PL6xS0sbVA1ebkU66okpi-KViA08_9DJKg)  
 [2]《C++程序设计基础（上）》——周震如 林伟健 编著  
 [3] _Mastering SFML Game Development_ —— Raimondas Pupius
