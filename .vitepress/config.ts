@@ -36,8 +36,8 @@ export default defineConfig({
         search: {
             provider: 'local'
         },
-        //outline:[2,3],
         outline: {
+            level: [2, 3],
             label: '文章摘要'
         },
         socialLinks: [
