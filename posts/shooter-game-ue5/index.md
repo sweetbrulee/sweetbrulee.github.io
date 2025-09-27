@@ -201,7 +201,7 @@ SphereComponent->OnComponentHit.AddDynamic(this, &AFortProjectile::OnProjectileI
 
 首先创建一个 `DraggableElement` 蓝图对象，所有可拖动的元件都是它的子类。当中有两个变量。
 
-<img src="images/ShooterGame_demo_t1.jpeg" width="300" />
+<img :src="./images/ShooterGame_demo_t1.jpeg" width="300" />
 
 - `DragOffset` 记录拖动偏移量。
 - `AliasReference` 保存拖动时分身的引用。
@@ -315,3 +315,4 @@ else
   <img src="images/ShooterGame_demo_t2.jpeg" width="500" />
 
 这样一来，对于动画序列的切换会更加平滑。
+
