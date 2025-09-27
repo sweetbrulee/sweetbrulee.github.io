@@ -8,7 +8,10 @@ const isProd = process.env.NODE_ENV === 'production'
 
 export default defineConfig({
     title: 'sweetbrulee',
-    head: [['link', { rel: 'icon', href: '/favicon_64x64.ico' }]],
+    head: [
+        ['link', { rel: 'icon', href: '/favicon_64x64.ico' }],
+        ['meta', { name: 'google-site-verification', content: process.env.GOOGLE_SITE_VERIFICATION ?? '' }]
+    ],
     base: '/',
     cacheDir: './node_modules/vitepress_cache',
     description: 'sweetbrulee 的个人技术博客，讨论并分享计算机技术。',
@@ -19,8 +22,8 @@ export default defineConfig({
         // 评论的仓库地址 https://giscus.app/ 请按照这个官方初始化后覆盖
         comment: {
             repo: 'sweetbrulee/sweetbrulee.github.io',
-            repoId: 'R_kgDOIYuLPw',
-            categoryId: 'DIC_kwDOIYuLP84Cvklv'
+            repoId: process.env.GISCUS_REPO_ID ?? '',
+            categoryId: process.env.GISCUS_CATEGORY_ID ?? ''
         },
         nav: [
             { text: 'Home', link: '/' },
