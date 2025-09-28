@@ -10,8 +10,6 @@ tags:
     - python
 ---
 
-# Tensorflow 架构解析
-
 ### Tensorflow 介绍
 
 - 由 Google 开发的端到端机器学习开源平台

@@ -85,16 +85,22 @@ h3 {
     position: relative;
 }
 /* content maxWidth*/
+@media (min-width: 1280px) and (max-width: 1439px) {
+    .VPDoc.has-aside .container {
+        margin-left: 30px;
+    }
+}
+
 .VPDoc.has-aside .content-container {
     max-width: 60rem !important;
 }
-
 
 @media (min-width: 768px) {
     .VPDoc {
         padding-top: 10px !important;
     }
 }
+
 @media (min-width: 960px) {
     .VPDoc {
         padding-top: 10px !important;
@@ -103,15 +109,18 @@ h3 {
     .VPDoc:not(.has-sidebar) .content {
         max-width: inherit !important;
     }
+
     .VPDocAsideOutline .content {
         padding-left: 14px !important;
     }
+
     .content {
         padding: 0 !important;
     }
 }
+
 /* when witdh less 1440 hide the aside 小于1440就到下一挡*/
-@media (min-width: 1280px) {
+@media (max-width: 1280px) {
     .VPDoc .aside {
         display: none !important;
     }
@@ -122,7 +131,6 @@ h3 {
         display: block !important;
     }
 }
-
 
 /*mobile*/
 @media screen and (max-width: 768px) {
