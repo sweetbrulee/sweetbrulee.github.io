@@ -166,3 +166,8 @@ tags:
 [1][《C++ SFML RPG》——Suraj Sharma](https://www.youtube.com/watch?v=IdKZpv6xqdw&list=PL6xS0sbVA1ebkU66okpi-KViA08_9DJKg)  
 [2]《C++程序设计基础（上）》——周震如 林伟健 编著  
 [3] _Mastering SFML Game Development_ —— Raimondas Pupius
+
+<VideoPlayer
+  bilibiliId="BV1Ba411s7jJ"
+  youtubeId="cfMWkiEC5kQ"
+/>
