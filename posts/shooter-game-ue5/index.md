@@ -315,3 +315,8 @@ else
 ![](images/ShooterGame_demo_t2.jpeg){width=500px}
 
 这样一来，对于动画序列的切换会更加平滑。
+
+<VideoPlayer
+  bilibiliId="BV1Je4y1b7UC"
+  youtubeId="rmCeh2ZA2Ws"
+/>
