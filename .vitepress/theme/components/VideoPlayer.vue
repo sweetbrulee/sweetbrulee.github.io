@@ -90,10 +90,11 @@ function switchSource() {
     margin: 1.5em 0;
     text-align: center;
 }
+
 .video-frame iframe {
     width: 100%;
-    /* max-width: 800px; */
-    height: 400px;
+    aspect-ratio: 16 / 9;
+    min-height: 200px;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
