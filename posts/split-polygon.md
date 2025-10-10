@@ -1,7 +1,7 @@
 ---
 date: 2023-09-30
 title: 基于K-means和Voronoi图的无人机任务区域划分算法
-description: 提出一种基于K-means和Voronoi图的区域划分算法，解决传统扫掠方法面积不均问题。
+description: 介绍一种基于K-means和Voronoi图的区域划分算法，解决传统扫掠方法面积不均问题。
 category: Algorithm
 tags:
     - javascript
