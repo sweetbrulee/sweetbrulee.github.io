@@ -95,7 +95,7 @@
                     :points="polygonToPath(polygon)"
                     class="voronoi-polygon"
                     :fill="polygonColors[index % polygonColors.length]"
-                    :stroke="`rgba(255, 255, 255, 0.6)`"
+                    :stroke="`var(--vp-c-text-1)`"
                     :stroke-width="borderWidth"
                 />
             </svg>
