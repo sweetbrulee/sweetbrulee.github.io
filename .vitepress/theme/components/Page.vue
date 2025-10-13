@@ -78,12 +78,13 @@ const pageArray = computed(() => {
     justify-content: space-between;
 }
 .post-title {
-    font-size: 1.0625rem;
-    font-weight: 500;
+    font-size: 1.1625rem;
+    font-family: 'Noto Serif SC', serif;
     color: var(--bt-theme-title) !important;
     margin: 0.1rem 0;
 }
 .post-title a {
+    font-weight: 700;
     color: var(--bt-theme-title) !important;
 }
 

@@ -533,7 +533,6 @@ const runAllSteps = async () => {
     flex-direction: column;
     max-width: 100%;
     margin: 0 auto;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .control-panel {

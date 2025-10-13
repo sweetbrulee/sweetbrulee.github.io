@@ -52,6 +52,7 @@ if (defaultDisplayTag) {
     padding: 0 16px 4px 16px;
     margin: 6px 8px;
     font-size: 0.875rem;
+    font-family: 'Cascadia Mono', sans-serif;
     line-height: 25px;
     background-color: var(--vp-c-bg-alt);
     transition: 0.4s;
@@ -70,7 +71,7 @@ if (defaultDisplayTag) {
     font-size: 1.375rem;
     font-weight: 600;
     color: var(--bt-theme-title);
-    font-family: var(--date-font-family);
+    font-family: 'Cascadia Mono', sans-serif;
 }
 
 @media screen and (max-width: 768px) {

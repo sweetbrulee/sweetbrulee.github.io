@@ -6,12 +6,12 @@
     --vp-c-brand-dark: var(--vp-c-brand);
     --vp-c-brand-darker: var(--vp-c-brand);
 
-    --vp-font-family-base: 'PingFang SC', 'Microsoft Yahei', sans-serif;
+    --vp-font-family-base: "Noto Sans SC", sans-serif;
 
     /* pure theme color */
     --li-dot-color: var(--vp-c-brand);
     --date-color: var(--vp-c-text-2);
-    --date-font-family: Georgia, sans-serif;
+    --date-font-family: 'Noto Serif SC', serif;
     --bt-theme-title: #000;
 }
 .dark {
@@ -39,7 +39,7 @@
     letter-spacing: 1px;
     font-weight: 500 !important;
     /*text-transform: uppercase;*/
-    font-family: Optima, sans-serif !important;
+    font-family: "Cascadia Mono", sans-serif !important;
 }
 .title a {
     color: var(--bt-theme-title)!important;
@@ -54,12 +54,14 @@
 }
 h1 {
     font-size: 1.375rem !important;
-    font-weight: 500 !important;
+    font-weight: 900 !important;
+    font-family: "Noto Serif SC", serif;
     padding-top: 14px;
 }
 h2 {
     font-size: 1.125rem !important;
-    font-weight: 500 !important;
+    font-weight: 700 !important;
+    font-family: "Noto Serif SC", serif;
     border-bottom: 1px solid var(--vp-c-divider);
     border-top: none !important;
     margin: inherit !important;
@@ -67,6 +69,7 @@ h2 {
 h3 {
     font-size: 1rem !important;
     font-weight: 500 !important;
+    font-family: "Noto Serif SC", serif;
 }
 /* for aside start */
 .aside {
@@ -198,6 +201,7 @@ h3 {
     margin-right: 10px;
     transition: 0.4s;
     border-radius: 2px;
+    font-family: "Cascadia Mono", sans-serif;
     color: var(--vp-c-text-1);
 }
 
