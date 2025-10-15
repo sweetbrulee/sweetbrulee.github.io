@@ -55,13 +55,13 @@
 h1 {
     font-size: 1.375rem !important;
     font-weight: 900 !important;
-    font-family: "Noto Serif SC", serif;
+    font-family: "Noto Sans SC", sans-serif;
     padding-top: 14px;
 }
 h2 {
     font-size: 1.125rem !important;
     font-weight: 700 !important;
-    font-family: "Noto Serif SC", serif;
+    font-family: "Noto Sans SC", sans-serif;
     border-bottom: 1px solid var(--vp-c-divider);
     border-top: none !important;
     margin: inherit !important;
@@ -69,7 +69,7 @@ h2 {
 h3 {
     font-size: 1rem !important;
     font-weight: 500 !important;
-    font-family: "Noto Serif SC", serif;
+    font-family: "Noto Sans SC", sans-serif;
 }
 /* for aside start */
 .aside {
