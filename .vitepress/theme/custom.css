@@ -11,7 +11,7 @@
     /* pure theme color */
     --li-dot-color: var(--vp-c-brand);
     --date-color: var(--vp-c-text-2);
-    --date-font-family: 'Noto Serif SC', serif;
+    --date-font-family: "Noto Sans SC", sans-serif;
     --bt-theme-title: #000;
 }
 .dark {
