@@ -28,7 +28,7 @@ const data = computed(() => useYearSort(theme.value.posts))
 .year {
     padding: 28px 0 10px 0;
     font-size: 1.375rem;
-    font-weight: 600;
+    font-weight: 800;
     color: var(--bt-theme-title);
     font-family: 'Cascadia Mono', sans-serif;
 }

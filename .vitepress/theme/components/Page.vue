@@ -79,12 +79,11 @@ const pageArray = computed(() => {
 }
 .post-title {
     font-size: 1.1625rem;
-    font-family: "Noto Sans SC", sans-serif;
+    font-family: 'Noto Sans SC', sans-serif;
     color: var(--bt-theme-title) !important;
     margin: 0.1rem 0;
 }
 .post-title a {
-    font-weight: 700;
     color: var(--bt-theme-title) !important;
 }
 
