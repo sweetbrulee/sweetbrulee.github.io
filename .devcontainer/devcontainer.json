@@ -17,7 +17,6 @@
         "vscode": {
             "extensions": [
                 "Vue.volar",
-                "VisualStudioExptTeam.vscodeintellicode",
                 "mhutchie.git-graph",
                 "esbenp.prettier-vscode"
             ]
