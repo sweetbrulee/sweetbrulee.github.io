@@ -61,7 +61,7 @@ export default defineConfig({
         math: true
     },
     sitemap: {
-        hostname: 'https://sweetbrulee.github.io',
+        hostname: 'https://sweetbrulee.github.io/',
         lastmodDateOnly: false
     },
     lastUpdated: true
