@@ -13,6 +13,5 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN npm install -g bun
-RUN bun install
 
 
