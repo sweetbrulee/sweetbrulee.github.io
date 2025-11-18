@@ -22,5 +22,6 @@
             ]
         }
     },
-    "remoteUser": "root"
+    "remoteUser": "root",
+    "postCreateCommand": "bun install"
 }
