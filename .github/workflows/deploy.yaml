@@ -38,8 +38,8 @@ jobs:
             - name: Setup Bun
               uses: oven-sh/setup-bun@v2
 
-            - name: Install Dependencies
-              run: bun install
+            - name: Install Production Dependencies
+              run: bun install --production
 
             - name: Build with VitePress
               env:
