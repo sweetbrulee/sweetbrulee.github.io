@@ -1,6 +1,6 @@
 <template>
     <div class="site-footer">
-        Copyright © <a class="vitepress" href="//github.com/sweetbrulee">{{ webTitle }}</a
+        Copyright © <a class="vitepress" :href="website">{{ webTitle }}</a
         ><br />
         Powered by <a class="vitepress" target="_blank" href="//vitepress.vuejs.org/">VitePress - 1.6.4</a> Theme by
         <a class="vitepress" target="_blank" href="//github.com/airene/vitepress-blog-pure">Vitepress-blog</a>
