@@ -12,13 +12,11 @@ const props = defineProps({
     }
 })
 
-//const isNew = computed(() => _isNew(props.date))
-
 function _isNew(date: string): boolean {
     const now = new Date()
     const cutoff = new Date()
     // 设定六个月之内为新鲜贴文
-    cutoff.setMonth(now.getMonth() - 12)
+    cutoff.setMonth(now.getMonth() - 6)
 
     return new Date(date) > cutoff
 }
