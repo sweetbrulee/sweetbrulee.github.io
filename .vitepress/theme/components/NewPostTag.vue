@@ -1,5 +1,5 @@
 <template>
-    <span class="new-post-span" v-if="isNew">新</span>
+    <span class="new-post-span" v-if="_isNew(props.date)">新</span>
 </template>
 
 <script lang="ts" setup>
@@ -12,13 +12,13 @@ const props = defineProps({
     }
 })
 
-const isNew = computed(() => _isNew(props.date))
+//const isNew = computed(() => _isNew(props.date))
 
 function _isNew(date: string): boolean {
     const now = new Date()
     const cutoff = new Date()
     // 设定六个月之内为新鲜贴文
-    cutoff.setMonth(now.getMonth() - 6)
+    cutoff.setMonth(now.getMonth() - 12)
 
     return new Date(date) > cutoff
 }
