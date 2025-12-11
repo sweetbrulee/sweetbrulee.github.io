@@ -1,0 +1,8 @@
+/* 自定义样式 */
+.mbb-canvas {
+    user-select: none;
+    width: 100%;
+    height: 100%;
+    display: block;
+    touch-action: none;
+}

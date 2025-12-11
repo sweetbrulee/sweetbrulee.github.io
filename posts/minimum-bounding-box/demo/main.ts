@@ -1,0 +1,180 @@
+// main.ts
+import * as THREE from 'three'
+import { SceneManager } from './scene'
+import { ControlsManager } from './controls'
+import { SelectionManager } from './selection'
+import { BoundingBoxManager } from './boundingBox'
+import { computeCentroid } from './utils'
+import { addTouchEventListener } from './touch'
+
+export function bootstrap(container: HTMLElement) {
+    // 初始化 SceneManager
+    const sceneManager = new SceneManager(container)
+
+    // 初始化 ControlsManager
+    const controlsManager = new ControlsManager(sceneManager.camera, sceneManager.renderer, sceneManager.scene)
+
+    // 初始化点集合
+    const points: THREE.Mesh[] = []
+
+    // 初始化 SelectionManager
+    const selectionManager = new SelectionManager(
+        sceneManager.renderer,
+        sceneManager.camera,
+        sceneManager.scene,
+        sceneManager.testPlane,
+        points,
+        container
+    )
+
+    // 初始化 BoundingBoxManager
+    const boundingBoxManager = new BoundingBoxManager(sceneManager.scene, points)
+
+    // 创建一个全局 Dummy 对象用于多点移动
+    const dummy = new THREE.Object3D()
+    sceneManager.scene.add(dummy)
+
+    // 设置 SelectionManager 的回调
+    selectionManager.setSelectionChangeCallback(() => {
+        const selectedCount = selectionManager.selectedPoints.length
+
+        if (selectedCount === 1) {
+            // 单点选择，附加到该点
+            controlsManager.transformControls.attach(selectionManager.selectedPoints[0])
+        } else if (selectedCount > 1) {
+            // 多点选择，附加到 Dummy 对象
+            const centroid = computeCentroid(selectionManager.selectedPoints.map((p) => p.position))
+            dummy.position.copy(centroid)
+            previousDummyPosition.copy(centroid)
+            controlsManager.transformControls.attach(dummy)
+        } else {
+            // 无选择，分离 TransformControls
+            controlsManager.transformControls.detach()
+        }
+
+        // 更新包围盒
+        boundingBoxManager.updateBoundingBox()
+    })
+
+    // 管理 TransformControls 的 objectChange 事件
+    let previousDummyPosition = new THREE.Vector3()
+
+    controlsManager.transformControls.addEventListener('objectChange', () => {
+        if (controlsManager.transformControls.object === dummy) {
+            const currentPosition = dummy.position.clone()
+            const delta = new THREE.Vector3().subVectors(currentPosition, previousDummyPosition)
+
+            // 将增量应用到所有选中的点
+            selectionManager.selectedPoints.forEach((point) => {
+                point.position.add(delta)
+            })
+
+            // 更新 previousDummyPosition
+            previousDummyPosition.copy(currentPosition)
+        }
+        // 更新包围盒
+        boundingBoxManager.updateBoundingBox()
+    })
+
+    // 监听 TransformControls 的 dragging-changed 事件，启用/禁用 OrbitControls
+    controlsManager.transformControls.addEventListener('dragging-changed', (event) => {
+        controlsManager.orbitControls.enabled = !event.value
+    })
+
+    // 添加键盘事件监听器
+    const onKeyDown = (event: KeyboardEvent) => {
+        if (event.ctrlKey) {
+            container.addEventListener('click', onAddPoint)
+        }
+
+        // 删除选中点
+        if (event.key === 'Delete') {
+            if (selectionManager.selectedPoints.length > 0) {
+                selectionManager.selectedPoints.forEach((point) => {
+                    sceneManager.scene.remove(point)
+                    const index = points.indexOf(point)
+                    if (index > -1) points.splice(index, 1)
+                })
+                selectionManager.selectedPoints = []
+                controlsManager.transformControls.detach()
+                boundingBoxManager.updateBoundingBox()
+            }
+        }
+    }
+
+    const onKeyUp = (event: KeyboardEvent) => {
+        if (!event.ctrlKey) {
+            container.removeEventListener('click', onAddPoint)
+        }
+    }
+
+    document.addEventListener('keydown', onKeyDown)
+    document.addEventListener('keyup', onKeyUp)
+
+    addTouchEventListener(onAddPoint)
+
+    // 点击新增点的逻辑
+    function onAddPoint(event: MouseEvent | TouchEvent) {
+        let coords = new THREE.Vector2()
+        const rect = container.getBoundingClientRect()
+        const width = rect.width || sceneManager.renderer.domElement.clientWidth || window.innerWidth
+        const height = rect.height || sceneManager.renderer.domElement.clientHeight || window.innerHeight
+        if (event instanceof MouseEvent) {
+            coords = new THREE.Vector2(
+                ((event.clientX - rect.left) / width) * 2 - 1,
+                -((event.clientY - rect.top) / height) * 2 + 1
+            )
+        } else if (event instanceof TouchEvent) {
+            const touch = event.touches[0]
+            coords = new THREE.Vector2(
+                ((touch.clientX - rect.left) / width) * 2 - 1,
+                -((touch.clientY - rect.top) / height) * 2 + 1
+            )
+        }
+        const raycaster = new THREE.Raycaster()
+        raycaster.setFromCamera(coords, sceneManager.camera)
+
+        // 使用已经存在的 testPlane 进行交叉检测
+        const intersects = raycaster.intersectObject(sceneManager.testPlane)
+
+        if (intersects.length > 0) {
+            const intersectPoint = intersects[0].point
+
+            // 新增点
+            const point = createPoint(intersectPoint)
+            points.push(point)
+            sceneManager.scene.add(point)
+            boundingBoxManager.updateBoundingBox()
+        }
+    }
+
+    function createPoint(position: THREE.Vector3): THREE.Mesh {
+        const mesh = new THREE.Mesh(
+            new THREE.SphereGeometry(0.1, 16, 16),
+            new THREE.MeshBasicMaterial({ color: 0xff0000 })
+        )
+        mesh.position.copy(position)
+        return mesh
+    }
+
+    // 动画循环
+    let isDisposed = false
+    function animate() {
+        if (isDisposed) return
+        requestAnimationFrame(animate)
+        controlsManager.updateOrbitControls()
+        sceneManager.updateTestPlane()
+        sceneManager.renderer.render(sceneManager.scene, sceneManager.camera)
+    }
+
+    animate()
+
+    return () => {
+        isDisposed = true
+        document.removeEventListener('keydown', onKeyDown)
+        document.removeEventListener('keyup', onKeyUp)
+        container.removeEventListener('click', onAddPoint)
+        selectionManager.dispose()
+        sceneManager.dispose()
+    }
+}
