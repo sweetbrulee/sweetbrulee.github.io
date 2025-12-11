@@ -87,7 +87,8 @@ export class SelectionManager {
             if (event.button === 0 && event.shiftKey) {
                 // Shift + 左键
                 this.isSelecting = true
-                this.startPoint = { x: event.clientX, y: event.clientY }
+                const rect = this.container.getBoundingClientRect()
+                this.startPoint = { x: event.clientX - rect.left, y: event.clientY - rect.top }
                 this.selectionBox.style.left = `${this.startPoint.x}px`
                 this.selectionBox.style.top = `${this.startPoint.y}px`
                 this.selectionBox.style.width = '0px'
@@ -100,8 +101,9 @@ export class SelectionManager {
 
         const onMouseMove = (event: MouseEvent) => {
             if (this.isSelecting) {
-                const currentX = event.clientX
-                const currentY = event.clientY
+                const rect = this.container.getBoundingClientRect()
+                const currentX = event.clientX - rect.left
+                const currentY = event.clientY - rect.top
 
                 const x = Math.min(currentX, this.startPoint.x)
                 const y = Math.min(currentY, this.startPoint.y)
@@ -122,7 +124,8 @@ export class SelectionManager {
                 this.isSelecting = false
                 this.selectionBox.style.display = 'none'
 
-                const endPoint = { x: event.clientX, y: event.clientY }
+                const containerRect = this.container.getBoundingClientRect()
+                const endPoint = { x: event.clientX - containerRect.left, y: event.clientY - containerRect.top }
                 const rect = {
                     left: Math.min(this.startPoint.x, endPoint.x),
                     top: Math.min(this.startPoint.y, endPoint.y),
@@ -133,13 +136,16 @@ export class SelectionManager {
                 // 清除之前的选择
                 this.clearSelection()
 
+                const width = containerRect.width || this.renderer.domElement.clientWidth
+                const height = containerRect.height || this.renderer.domElement.clientHeight
+
                 // 选择在矩形内的点
                 this.points.forEach((point) => {
                     const screenPos = point.position.clone()
                     screenPos.project(this.camera)
 
-                    const x = ((screenPos.x + 1) / 2) * this.renderer.domElement.clientWidth
-                    const y = ((-screenPos.y + 1) / 2) * this.renderer.domElement.clientHeight
+                    const x = ((screenPos.x + 1) / 2) * width
+                    const y = ((-screenPos.y + 1) / 2) * height
 
                     if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
                         this.selectedPoints.push(point)
