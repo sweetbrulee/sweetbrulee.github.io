@@ -2,15 +2,12 @@
     "compilerOptions": {
         "target": "esnext",
         "module": "esnext",
-        "moduleResolution": "node",
+        "moduleResolution": "bundler",
         "strict": true,
         "jsx": "preserve",
-        "sourceMap": true,
         "resolveJsonModule": true,
-        "esModuleInterop": true,
         "skipLibCheck": true,
         "lib": ["ESNext", "DOM"],
-        "types": [],
         "baseUrl": "./",
         "paths": {
             "@/*": ["src/*"]
