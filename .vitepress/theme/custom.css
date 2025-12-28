@@ -1,24 +1,22 @@
 :root {
-
     --vp-c-brand: #2563eb !important;
     --vp-c-brand-light: var(--vp-c-brand);
     --vp-c-brand-lighter: var(--vp-c-brand);
     --vp-c-brand-dark: var(--vp-c-brand);
     --vp-c-brand-darker: var(--vp-c-brand);
 
-    --vp-font-family-base: "Noto Sans SC", sans-serif;
+    --vp-font-family-base: 'Noto Sans SC', sans-serif;
 
     /* pure theme color */
     --li-dot-color: var(--vp-c-brand);
     --date-color: var(--vp-c-text-2);
-    --date-font-family: "Noto Sans SC", sans-serif;
+    --date-font-family: 'Noto Sans SC', sans-serif;
     --bt-theme-title: #000;
 }
 .dark {
     --vp-c-brand: #3b82f6;
-    --bt-theme-title: #fff
+    --bt-theme-title: #fff;
 }
-
 
 /* theme reset start */
 
@@ -39,12 +37,13 @@
     letter-spacing: 1px;
     font-weight: 500 !important;
     /*text-transform: uppercase;*/
-    font-family: "Cascadia Mono", sans-serif !important;
+    font-family: 'Cascadia Mono', sans-serif !important;
 }
 .title a {
-    color: var(--bt-theme-title)!important;
+    color: var(--bt-theme-title) !important;
 }
-.content a[rel~='noreferrer']:link, a[rel~='noreferrer']:visited {
+.content a[rel~='noreferrer']:link,
+a[rel~='noreferrer']:visited {
     color: var(--vp-c-brand);
     font-weight: 500 !important;
     border-bottom: 1px solid var(--vp-c-brand);
@@ -55,13 +54,13 @@
 h1 {
     font-size: 1.375rem !important;
     font-weight: 900 !important;
-    font-family: "Noto Sans SC", sans-serif;
+    font-family: 'Noto Sans SC', sans-serif;
     padding-top: 14px;
 }
 h2 {
     font-size: 1.125rem !important;
     font-weight: 700 !important;
-    font-family: "Noto Sans SC", sans-serif;
+    font-family: 'Noto Sans SC', sans-serif;
     border-bottom: 1px solid var(--vp-c-divider);
     border-top: none !important;
     margin: inherit !important;
@@ -69,7 +68,7 @@ h2 {
 h3 {
     font-size: 1rem !important;
     font-weight: 500 !important;
-    font-family: "Noto Sans SC", sans-serif;
+    font-family: 'Noto Sans SC', sans-serif;
 }
 /* for aside start */
 .aside {
@@ -91,6 +90,11 @@ h3 {
 @media (min-width: 1280px) and (max-width: 1439px) {
     .VPDoc.has-aside .container {
         margin-left: 30px;
+    }
+}
+@media (min-width: 1440px) and (max-width: 1599px) {
+    .VPDoc.has-aside .container {
+        margin-left: 100px;
     }
 }
 
@@ -122,14 +126,14 @@ h3 {
     }
 }
 
-/* when witdh less 1440 hide the aside 小于1440就到下一挡*/
+/* when witdh less 1600 hide the aside 小于1600就到下一挡*/
 @media (max-width: 1280px) {
     .VPDoc .aside {
         display: none !important;
     }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1600px) {
     .VPDoc .aside {
         display: block !important;
     }
@@ -201,7 +205,6 @@ h3 {
     margin-right: 10px;
     transition: 0.4s;
     border-radius: 2px;
-    font-family: "Cascadia Mono", sans-serif;
+    font-family: 'Cascadia Mono', sans-serif;
     color: var(--vp-c-text-1);
 }
-
